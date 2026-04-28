@@ -1,0 +1,145 @@
+/* ============================================================
+   Shared nav
+   ============================================================ */
+
+.nx-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: color-mix(in oklch, var(--navy-050) 78%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--navy-300) 50%, transparent);
+}
+.nx-nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nx-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: var(--navy-1000);
+}
+.nx-logo-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--navy-1000), var(--navy-700));
+  position: relative;
+  overflow: hidden;
+}
+.nx-logo-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, var(--accent) 0%, transparent 55%);
+}
+
+.nx-toggle {
+  margin-left: auto;
+  display: flex;
+  background: var(--navy-200);
+  padding: 3px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.nx-toggle a {
+  padding: 7px 16px;
+  border-radius: 999px;
+  color: var(--navy-600);
+  transition: all 0.18s ease;
+}
+.nx-toggle a.active {
+  background: var(--navy-1000);
+  color: white;
+}
+.nx-toggle a:hover:not(.active) {
+  color: var(--navy-1000);
+}
+
+.nx-nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  color: var(--navy-600);
+}
+.nx-nav-links a:hover {
+  color: var(--navy-1000);
+}
+
+.nx-cta {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+.nx-cta:hover {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.nx-footer {
+  background: var(--navy-1000);
+  color: var(--navy-300);
+  padding: 80px var(--gutter) 40px;
+}
+.nx-footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 64px;
+}
+.nx-footer h4 {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.nx-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+.nx-footer a:hover {
+  color: white;
+}
+.nx-footer-base {
+  max-width: var(--max);
+  margin: 60px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--navy-800);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--navy-500);
+  font-family: var(--font-mono);
+}
+@media (max-width: 800px) {
+  .nx-footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
