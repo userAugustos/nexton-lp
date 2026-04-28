@@ -404,11 +404,7 @@ export function TweakColor({ label, value, onChange }) {
 
 export function TweakButton({ label, onClick, secondary = false }) {
   return (
-    <button
-      type="button"
-      className={secondary ? "twk-btn secondary" : "twk-btn"}
-      onClick={onClick}
-    >
+    <button type="button" className={secondary ? "twk-btn secondary" : "twk-btn"} onClick={onClick}>
       {label}
     </button>
   );
