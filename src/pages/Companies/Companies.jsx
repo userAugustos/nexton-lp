@@ -1,4 +1,4 @@
-import "@/styles/companies.css";
+import "./styles/companies.css";
 import { useTweaks } from "@/hooks/useTweaks";
 import {
   TweaksPanel,
@@ -7,12 +7,12 @@ import {
   TweakSelect,
   TweakRadio,
 } from "@/components/TweaksPanel";
-import CompaniesHero from "./CompaniesHero";
-import CompaniesLogos from "./CompaniesLogos";
-import CaseStudies from "./CaseStudies";
-import HowItWorks from "./HowItWorks";
-import Models from "./Models";
-import CompaniesContact from "./CompaniesContact";
+import CompaniesLogos from "@/components/CompaniesLogos";
+import CompaniesHero from "./components/CompaniesHero";
+import CaseStudies from "./components/CaseStudies";
+import HowItWorks from "./components/HowItWorks";
+import Models from "./components/Models";
+import CompaniesContact from "./components/CompaniesContact";
 
 const COMPANIES_DEFAULTS = {
   accent: "#337BFF",

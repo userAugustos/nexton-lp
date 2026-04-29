@@ -1,4 +1,4 @@
-import LatamUSMap from "@/components/LatamUSMap";
+import LatamUSMap from "./LatamUSMap";
 
 export default function MapBanner() {
   return (

@@ -1,4 +1,4 @@
-import "@/styles/talent.css";
+import "./styles/talent.css";
 import { useTweaks } from "@/hooks/useTweaks";
 import {
   TweaksPanel,
@@ -8,13 +8,13 @@ import {
   TweakRadio,
   TweakToggle,
 } from "@/components/TweaksPanel";
-import CompaniesLogos from "@/pages/Companies/CompaniesLogos";
-import TalentHero from "./TalentHero";
-import WhatWeOffer from "./WhatWeOffer";
-import TalentProcess from "./TalentProcess";
-import TalentFAQ from "./TalentFAQ";
-import ApplyForm from "./ApplyForm";
-import MapBanner from "./MapBanner";
+import CompaniesLogos from "@/components/CompaniesLogos";
+import TalentHero from "./components/TalentHero";
+import WhatWeOffer from "./components/WhatWeOffer";
+import TalentProcess from "./components/TalentProcess";
+import TalentFAQ from "./components/TalentFAQ";
+import ApplyForm from "./components/ApplyForm";
+import MapBanner from "./components/MapBanner";
 
 const TALENT_DEFAULTS = {
   accent: "#337BFF",

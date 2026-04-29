@@ -1,4 +1,4 @@
-import { useAccordion } from "@/hooks/useAccordion";
+import { useAccordion } from "../hooks/useAccordion";
 
 const ITEMS = [
   {
