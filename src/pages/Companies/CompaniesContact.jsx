@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useFormState } from "@/hooks/useFormState";
+
+const INITIAL = {
+  name: "",
+  company: "",
+  email: "",
+  roles: "1–3",
+  urgency: "Within 30 days",
+  note: "",
+};
 
 export default function CompaniesContact() {
-  const [data, setData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    roles: "1–3",
-    urgency: "Within 30 days",
-    note: "",
-  });
-  const [done, setDone] = useState(false);
-  const u = (k) => (e) => setData({ ...data, [k]: e.target.value });
+  const { data, submitted, update, submit } = useFormState(INITIAL);
 
   return (
     <section className="section c-contact" id="contact">
@@ -35,14 +35,8 @@ export default function CompaniesContact() {
             </ul>
           </div>
 
-          <form
-            className="c-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setDone(true);
-            }}
-          >
-            {done ? (
+          <form className="c-form" onSubmit={submit}>
+            {submitted ? (
               <div className="c-form-thanks">
                 <div
                   className="mono"
@@ -61,14 +55,19 @@ export default function CompaniesContact() {
                 <div className="c-form-row">
                   <label>
                     <span>Your name</span>
-                    <input required value={data.name} onChange={u("name")} placeholder="Jane Doe" />
+                    <input
+                      required
+                      value={data.name}
+                      onChange={update("name")}
+                      placeholder="Jane Doe"
+                    />
                   </label>
                   <label>
                     <span>Company</span>
                     <input
                       required
                       value={data.company}
-                      onChange={u("company")}
+                      onChange={update("company")}
                       placeholder="Acme, Inc."
                     />
                   </label>
@@ -79,14 +78,14 @@ export default function CompaniesContact() {
                     required
                     type="email"
                     value={data.email}
-                    onChange={u("email")}
+                    onChange={update("email")}
                     placeholder="jane@acme.com"
                   />
                 </label>
                 <div className="c-form-row">
                   <label>
                     <span># of open roles</span>
-                    <select value={data.roles} onChange={u("roles")}>
+                    <select value={data.roles} onChange={update("roles")}>
                       <option>1–3</option>
                       <option>4–10</option>
                       <option>10–25</option>
@@ -95,7 +94,7 @@ export default function CompaniesContact() {
                   </label>
                   <label>
                     <span>Urgency</span>
-                    <select value={data.urgency} onChange={u("urgency")}>
+                    <select value={data.urgency} onChange={update("urgency")}>
                       <option>This week</option>
                       <option>Within 30 days</option>
                       <option>Within 90 days</option>
@@ -108,7 +107,7 @@ export default function CompaniesContact() {
                   <textarea
                     rows="3"
                     value={data.note}
-                    onChange={u("note")}
+                    onChange={update("note")}
                     placeholder="Stack, seniority, team size, anything else we should know…"
                   ></textarea>
                 </label>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useFormState } from "@/hooks/useFormState";
 
 const INITIAL = {
   name: "",
@@ -10,14 +10,7 @@ const INITIAL = {
 };
 
 export default function ApplyForm() {
-  const [data, setData] = useState(INITIAL);
-  const [submitted, setSubmitted] = useState(false);
-  const update = (k) => (e) => setData({ ...data, [k]: e.target.value });
-
-  const submit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { data, submitted, update, submit, reset } = useFormState(INITIAL);
 
   return (
     <section className="section t-apply" id="apply">
@@ -63,14 +56,7 @@ export default function ApplyForm() {
                   <span className="mono">{data.email || "your inbox"}</span>. A talent partner will
                   reach out within 5 business days.
                 </p>
-                <button
-                  className="btn btn-ghost"
-                  type="button"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setData(INITIAL);
-                  }}
-                >
+                <button className="btn btn-ghost" type="button" onClick={reset}>
                   Submit another
                 </button>
               </div>

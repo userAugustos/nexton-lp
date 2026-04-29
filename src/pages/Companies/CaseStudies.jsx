@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCarousel } from "@/hooks/useCarousel";
 
 const QUOTES = [
   {
@@ -60,17 +60,8 @@ const QUOTES = [
 ];
 
 export default function CaseStudies() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const { active, setPaused, goTo, next, prev } = useCarousel(QUOTES.length);
   const q = QUOTES[active];
-  const next = () => setActive((a) => (a + 1) % QUOTES.length);
-  const prev = () => setActive((a) => (a - 1 + QUOTES.length) % QUOTES.length);
-
-  useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => setActive((a) => (a + 1) % QUOTES.length), 5000);
-    return () => clearInterval(t);
-  }, [paused]);
 
   return (
     <section className="section c-cases" id="proof">
@@ -146,7 +137,7 @@ export default function CaseStudies() {
                   <button
                     key={i}
                     className={`c-tdot ${i === active ? "active" : ""}`}
-                    onClick={() => setActive(i)}
+                    onClick={() => goTo(i)}
                     aria-label={`Go to slide ${i + 1}`}
                   ></button>
                 ))}

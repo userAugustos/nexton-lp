@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useAccordion } from "@/hooks/useAccordion";
 
 const ITEMS = [
   {
@@ -28,7 +28,7 @@ const ITEMS = [
 ];
 
 export default function TalentFAQ() {
-  const [open, setOpen] = useState(0);
+  const { open, toggle } = useAccordion(0);
 
   return (
     <section className="section" id="faq">
@@ -40,7 +40,7 @@ export default function TalentFAQ() {
         <ul className="t-faq">
           {ITEMS.map((it, i) => (
             <li key={it.q} className={open === i ? "open" : ""}>
-              <button onClick={() => setOpen(open === i ? -1 : i)}>
+              <button onClick={() => toggle(i)}>
                 <span>{it.q}</span>
                 <span className="t-faq-sign">{open === i ? "−" : "+"}</span>
               </button>
