@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import TransitionLink from "./TransitionLink";
 import "./Nav.css";
 
 export function NextonNav({ active = "talent", dark = false }) {
@@ -8,18 +9,18 @@ export function NextonNav({ active = "talent", dark = false }) {
   return (
     <header className={`nx-nav ${dark ? "dark" : ""}`}>
       <div className="nx-nav-inner">
-        <Link to="/talent" className="nx-logo">
+        <TransitionLink to="/talent" className="nx-logo">
           <span className="nx-logo-mark"></span>
           Nexton
-        </Link>
+        </TransitionLink>
 
         <nav className="nx-toggle" aria-label="Audience">
-          <Link to="/" className={active === "companies" ? "active" : ""}>
+          <TransitionLink to="/" className={active === "companies" ? "active" : ""}>
             For Companies
-          </Link>
-          <Link to="/talent" className={active === "talent" ? "active" : ""}>
+          </TransitionLink>
+          <TransitionLink to="/talent" className={active === "talent" ? "active" : ""}>
             For Engineers
-          </Link>
+          </TransitionLink>
         </nav>
 
         <nav className="nx-nav-links" aria-label="Primary">
