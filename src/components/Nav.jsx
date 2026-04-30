@@ -9,12 +9,16 @@ export function NextonNav({ active = "talent", dark = false }) {
   return (
     <header className={`nx-nav ${dark ? "dark" : ""}`}>
       <div className="nx-nav-inner">
-        <TransitionLink to="/talent" className="nx-logo">
-          <span className="nx-logo-mark"></span>
-          Nexton
+        <TransitionLink to="/talent" className="nx-logo" aria-label="Nexton">
+          <img
+            src={dark ? "/Nexton/NextonLogo.svg" : "/Nexton/NextonLogoDark.svg"}
+            alt="Nexton"
+            className="nx-logo-img"
+          />
         </TransitionLink>
 
-        <nav className="nx-toggle" aria-label="Audience">
+        <nav className="nx-toggle" data-active={active} aria-label="Audience">
+          <span className="nx-toggle-thumb" aria-hidden="true" />
           <TransitionLink to="/" className={active === "companies" ? "active" : ""}>
             For Companies
           </TransitionLink>
@@ -30,7 +34,9 @@ export function NextonNav({ active = "talent", dark = false }) {
         </nav>
 
         <a href={ctaHref} className="nx-cta">
-          {ctaLabel}
+          <span className="nx-cta-text" key={active}>
+            {ctaLabel}
+          </span>
         </a>
       </div>
     </header>
@@ -42,10 +48,12 @@ export function NextonFooter() {
     <footer className="nx-footer">
       <div className="nx-footer-inner">
         <div>
-          <div className="nx-logo" style={{ color: "white", marginBottom: 18 }}>
-            <span className="nx-logo-mark"></span>
-            Nexton
-          </div>
+          <img
+            src="/Nexton/NextonLogo.svg"
+            alt="Nexton Logo"
+            loading="lazy"
+            className="nx-footer-logo"
+          />
           <p style={{ fontSize: 14, lineHeight: 1.55, maxWidth: 360, color: "var(--navy-300)" }}>
             Engineer-led recruiting connecting Latin America's best builders with U.S. companies.
           </p>
