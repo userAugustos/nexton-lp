@@ -19,23 +19,22 @@
 
 /* ===== HERO ===== */
 .t-hero {
-  padding: 56px var(--gutter) 100px;
+  padding: 64px var(--gutter) 100px;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
-.t-hero::before {
-  content: "";
+.t-hero-bg {
   position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(
-    circle,
-    color-mix(in oklch, var(--accent) 25%, transparent),
-    transparent 65%
-  );
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
+  background: #ffffff;
+}
+.t-hero-bg .faulty-terminal-container {
+  width: 100%;
+  height: 100%;
+  filter: invert(1) hue-rotate(180deg);
 }
 .t-hero-grid {
   max-width: var(--max);
@@ -45,6 +44,7 @@
   gap: 80px;
   align-items: center;
   position: relative;
+  z-index: 2;
 }
 @media (max-width: 960px) {
   .t-hero-grid {
@@ -78,7 +78,7 @@
 .t-hero-cta {
   display: flex;
   gap: 12px;
-  margin-top: 40px;
+  margin-top: 28px;
   flex-wrap: wrap;
 }
 
@@ -86,8 +86,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 56px;
-  padding-top: 32px;
+  margin-top: 32px;
+  padding-top: 20px;
   border-top: 1px solid color-mix(in oklch, var(--navy-300) 60%, transparent);
 }
 .t-meta-num {
@@ -305,9 +305,174 @@
   }
 }
 
-@keyframes arcDash {
-  to {
-    stroke-dashoffset: -28;
+/* ===== map: cobe globe + legend ===== */
+.lus-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+  gap: 56px;
+  align-items: center;
+}
+.lus-stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.lus-stage::after {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in oklch, var(--accent) 14%, transparent) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.lus-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  contain: layout paint size;
+  touch-action: pan-y;
+}
+.lus-canvas:active {
+  cursor: grabbing;
+}
+
+.lus-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  border-left: 1px solid color-mix(in oklch, var(--navy-300) 70%, transparent);
+  padding-left: 16px;
+}
+.lus-legend-item {
+  display: grid;
+  grid-template-columns: 10px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  color: var(--navy-900);
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+.lus-legend-item:hover {
+  background: color-mix(in oklch, var(--navy-1000) 4%, transparent);
+}
+.lus-legend-item:active {
+  transform: translateX(1px);
+}
+.lus-legend-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.lus-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--accent) 22%, transparent);
+}
+.lus-us .lus-legend-dot {
+  background: var(--navy-1000);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--navy-1000) 22%, transparent);
+}
+.lus-legend-code {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--navy-500);
+  text-transform: uppercase;
+}
+.lus-legend-name {
+  letter-spacing: -0.01em;
+}
+
+.lus-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.lus-label {
+  position: absolute;
+  z-index: 2;
+  bottom: anchor(top);
+  left: anchor(center);
+  translate: -50% -10px;
+  padding: 3px 7px 4px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: white;
+  background: var(--accent);
+  white-space: nowrap;
+  pointer-events: none;
+  transition:
+    opacity 0.28s ease,
+    filter 0.28s ease;
+}
+.lus-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 8px;
+  background: inherit;
+  translate: -50% 0;
+}
+.lus-label--us {
+  background: var(--navy-1000);
+}
+@supports not (position-anchor: --x) {
+  .lus-label {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .lus-wrap {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .lus-legend {
+    border-left: none;
+    border-top: 1px solid color-mix(in oklch, var(--navy-300) 70%, transparent);
+    padding-left: 0;
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lus-canvas {
+    transition: none;
   }
 }
 

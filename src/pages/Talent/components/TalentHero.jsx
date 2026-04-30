@@ -1,3 +1,5 @@
+import FaultyTerminal from "@/components/FaultyTerminal/FaultyTerminal";
+
 function Check() {
   return (
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -46,9 +48,27 @@ function Match({ name, stage, pct }) {
 export default function TalentHero() {
   return (
     <section className="t-hero">
+      <div className="t-hero-bg" aria-hidden="true">
+        <FaultyTerminal
+          scale={3}
+          digitSize={1.8}
+          timeScale={0.5}
+          scanlineIntensity={0.1}
+          glitchAmount={2}
+          flickerAmount={1.1}
+          noiseAmp={0.9}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.15}
+          tint="#4372ff"
+          mouseReact={false}
+          mouseStrength={0.5}
+          brightness={0.6}
+        />
+      </div>
       <div className="t-hero-grid">
         <div className="t-hero-copy">
-          <div className="eyebrow" style={{ marginBottom: 24 }}>
+          <div className="eyebrow" style={{ marginBottom: 16 }}>
             <span className="t-pulse"></span> Now placing 200+ engineers · LATAM → US
           </div>
           <h1 className="h-display">
@@ -56,10 +76,9 @@ export default function TalentHero() {
             <br />
             Hired by the best <span className="h-display-serif">U.S. teams.</span>
           </h1>
-          <p className="lede" style={{ marginTop: 28 }}>
-            Nexton matches senior engineers from Argentina, Brazil, Colombia, Mexico and across
-            LATAM with long-term remote roles at the U.S. companies you actually want to work for.
-            Engineers vet engineers. No churn-and-burn.
+          <p className="lede" style={{ marginTop: 20 }}>
+            Nexton matches senior engineers from LATAM with long-term remote roles at the U.S.
+            companies you actually want to work for. Engineers vet engineers. No churn-and-burn.
           </p>
           <div className="t-hero-cta">
             <a href="#apply" className="btn btn-primary">
@@ -72,9 +91,6 @@ export default function TalentHero() {
                   strokeLinecap="round"
                 />
               </svg>
-            </a>
-            <a href="#offer" className="btn btn-ghost">
-              See what you get
             </a>
           </div>
 
