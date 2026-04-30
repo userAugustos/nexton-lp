@@ -46,6 +46,21 @@ export default function CompaniesHero() {
               See case studies
             </a>
           </div>
+
+          <div className="c-hero-meta">
+            <div>
+              <div className="c-meta-num">14 days</div>
+              <div className="c-meta-lbl">avg. time-to-offer</div>
+            </div>
+            <div>
+              <div className="c-meta-num">3.2%</div>
+              <div className="c-meta-lbl">vetted ratio</div>
+            </div>
+            <div>
+              <div className="c-meta-num">94%</div>
+              <div className="c-meta-lbl">retention 12mo</div>
+            </div>
+          </div>
         </div>
 
         <div className="c-hero-panel">
@@ -85,19 +100,29 @@ export default function CompaniesHero() {
               days={18}
             />
           </div>
-          <div className="c-panel-foot">
-            <div>
-              <div className="mono c-foot-key">AVG TIME-TO-OFFER</div>
-              <div className="c-foot-val">14 days</div>
+          <div className="c-panel-cta">
+            <div className="c-panel-cta-text">
+              <div className="c-panel-cta-title">See what a LATAM team would cost.</div>
+              <div className="c-panel-cta-sub">
+                Plan headcount, salary, and burn — built by engineers, not spreadsheets.
+              </div>
             </div>
-            <div>
-              <div className="mono c-foot-key">VETTED RATIO</div>
-              <div className="c-foot-val">3.2%</div>
-            </div>
-            <div>
-              <div className="mono c-foot-key">RETENTION 12mo</div>
-              <div className="c-foot-val">94%</div>
-            </div>
+            <a
+              className="btn btn-ghost"
+              href="https://nexton.dev/calculate-team-costs"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Calculate team cost
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
