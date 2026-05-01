@@ -113,6 +113,9 @@ export default function LatamUSMap() {
     let globe = null;
     let alive = true;
     let labelEls = [];
+    let tick = null;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const measure = () => {
       if (canvas) width = canvas.offsetWidth;
@@ -128,9 +131,9 @@ export default function LatamUSMap() {
       }
 
       globe = createGlobe(canvas, {
-        devicePixelRatio: 2,
-        width: width * 2,
-        height: width * 2,
+        devicePixelRatio: dpr,
+        width,
+        height: width,
         phi: currentPhiRef.current,
         theta: currentThetaRef.current,
         dark: 0,
@@ -160,7 +163,7 @@ export default function LatamUSMap() {
         }
       }
 
-      const tick = () => {
+      tick = () => {
         if (!alive) return;
         const distPhi = targetPhiRef.current - currentPhiRef.current;
         const distTheta = targetThetaRef.current - currentThetaRef.current;
@@ -169,8 +172,8 @@ export default function LatamUSMap() {
         globe.update({
           phi: currentPhiRef.current,
           theta: currentThetaRef.current,
-          width: width * 2,
-          height: width * 2,
+          width,
+          height: width,
         });
         rafId = requestAnimationFrame(tick);
       };
@@ -181,11 +184,22 @@ export default function LatamUSMap() {
       });
     };
 
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      } else if (alive && rafId === 0) {
+        rafId = requestAnimationFrame(tick || start);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     start();
 
     return () => {
       alive = false;
       cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibility);
       labelEls.forEach((el) => el.remove());
       labelEls = [];
       if (globe) globe.destroy();

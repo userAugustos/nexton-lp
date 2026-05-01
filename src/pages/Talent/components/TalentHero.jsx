@@ -64,6 +64,7 @@ export default function TalentHero() {
           mouseReact={false}
           mouseStrength={0.5}
           brightness={0.6}
+          dpr={1}
         />
       </div>
       <div className="t-hero-grid">
