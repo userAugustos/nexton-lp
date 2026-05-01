@@ -1,67 +1,42 @@
+import { useState } from "react";
 import { useCarousel } from "../hooks/useCarousel";
+import { TESTIMONIALS } from "@/data/testimonials";
+import LinkedInIcon from "@/components/LinkedInIcon";
 
-const QUOTES = [
-  {
-    quote:
-      "We could actually grow an entire unit out there with the foundation of knowing we'll find the right people through Nexton at our side.",
-    name: "Josh Schachter",
-    title: "CEO",
-    company: "UpdateAI",
-    hue: 12,
-  },
-  {
-    quote:
-      "Nexton sent us four senior engineers in six weeks after agencies wasted five months. The vetting bar is genuinely the highest I've seen — we've kept every single hire.",
-    name: "Maya Ellington",
-    title: "COO",
-    company: "Verdant Climate",
-    hue: 158,
-  },
-  {
-    quote:
-      "They handled sourcing, contracts, payroll, and equipment across five countries. I have one point of contact instead of five vendors and our LATAM team ships before SF wakes up.",
-    name: "Daniel Park",
-    title: "VP Engineering",
-    company: "Loopstack",
-    hue: 220,
-  },
-  {
-    quote:
-      "Our shortlist showed up with full vetting transcripts and live coding recordings. Our interview loop went from eight rounds to four and we still raised the bar.",
-    name: "Priya Raman",
-    title: "Head of Talent",
-    company: "Northwind Health",
-    hue: 290,
-  },
-  {
-    quote:
-      "We've made twelve hires through Nexton across two years. Eleven are still on the team. That retention number alone is worth the partnership.",
-    name: "Marco Beltrán",
-    title: "CTO",
-    company: "Ledgerlane",
-    hue: 38,
-  },
-  {
-    quote:
-      "Direct calendar links, structured rubrics, transparent pricing. It's the only hiring partner I recommend without a caveat.",
-    name: "Sarah Okonkwo",
-    title: "CEO",
-    company: "Threadlight",
-    hue: 340,
-  },
-  {
-    quote:
-      "We saved roughly $2.4M against equivalent local hires in our first year. The salary delta is real but the quality delta is what made us renew.",
-    name: "James Whitford",
-    title: "COO",
-    company: "Pacific Logic",
-    hue: 195,
-  },
-];
+function Avatar({ name, image, hue }) {
+  const [errored, setErrored] = useState(false);
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("");
+
+  if (image && !errored) {
+    return (
+      <img
+        src={image}
+        alt={name}
+        loading="lazy"
+        onError={() => setErrored(true)}
+        className="c-tavatar-img"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="c-tavatar"
+      style={{
+        background: `radial-gradient(circle at 30% 30%, hsl(${hue} 70% 72%), hsl(${(hue + 40) % 360} 60% 50%))`,
+      }}
+    >
+      <span className="mono">{initials}</span>
+    </div>
+  );
+}
 
 export default function CaseStudies() {
-  const { active, setPaused, goTo } = useCarousel(QUOTES.length);
-  const q = QUOTES[active];
+  const { active, setPaused, goTo } = useCarousel(TESTIMONIALS.length);
+  const t = TESTIMONIALS[active];
 
   return (
     <section className="section c-cases" id="proof">
@@ -80,7 +55,7 @@ export default function CaseStudies() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="c-tcard" key={active}>
+            <div className="c-tcard" key={t.id}>
               <div className="c-tcard-top">
                 <div className="c-tclutch mono">
                   <span className="c-tclutch-lbl">Review on</span>
@@ -107,37 +82,33 @@ export default function CaseStudies() {
                   <span className="c-tquote-mark" aria-hidden="true">
                     &ldquo;
                   </span>
-                  {q.quote}
+                  {t.quote}
                   <span className="c-tquote-mark" aria-hidden="true">
                     &rdquo;
                   </span>
                 </blockquote>
               </div>
               <div className="c-tcard-bot">
-                <div
-                  className="c-tavatar"
-                  style={{
-                    background: `radial-gradient(circle at 30% 30%, hsl(${q.hue} 70% 72%), hsl(${(q.hue + 40) % 360} 60% 50%))`,
-                  }}
-                >
-                  <span className="mono">
-                    {q.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
+                <Avatar name={t.name} image={t.image} hue={t.hue} />
+                <div className="c-tname-block">
+                  <div className="c-tname">{t.name}</div>
+                  <div className="c-tmeta">
+                    {t.title} · <strong>{t.company}</strong>
+                  </div>
                 </div>
-                <div className="c-tname">{q.name}</div>
-                <div className="c-tmeta">
-                  {q.title} · <strong>{q.company}</strong>
-                </div>
+                <LinkedInIcon
+                  href={t.linkedin}
+                  label={`${t.name} on LinkedIn`}
+                  size="sm"
+                  className="c-tli"
+                />
                 <div className="c-tdots">
-                  {QUOTES.map((_, i) => (
+                  {TESTIMONIALS.map((it, i) => (
                     <button
-                      key={i}
+                      key={it.id}
                       className={`c-tdot ${i === active ? "active" : ""}`}
                       onClick={() => goTo(i)}
-                      aria-label={`Go to slide ${i + 1}`}
+                      aria-label={`Go to ${it.name}'s testimonial`}
                     ></button>
                   ))}
                 </div>

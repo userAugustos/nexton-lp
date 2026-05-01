@@ -1,0 +1,39 @@
+.li-icon {
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--navy-100);
+  color: var(--navy-700);
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+  flex-shrink: 0;
+}
+.li-icon:hover {
+  background: #0a66c2;
+  color: white;
+  transform: translateY(-1px);
+}
+.li-icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.li-icon svg {
+  width: 55%;
+  height: 55%;
+  display: block;
+}
+
+.li-icon--sm {
+  width: 22px;
+  height: 22px;
+}
+.li-icon--md {
+  width: 26px;
+  height: 26px;
+}
+.li-icon--lg {
+  width: 32px;
+  height: 32px;
+}
