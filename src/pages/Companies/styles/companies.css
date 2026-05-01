@@ -217,7 +217,7 @@
 
 /* ===== LOGOS ===== */
 .c-logos {
-  padding: 60px 0 80px;
+  padding: 2rem 0;
   border-top: 1px solid var(--navy-200);
   border-bottom: 1px solid var(--navy-200);
   background: white;
@@ -229,7 +229,7 @@
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--navy-700);
-  margin-bottom: 36px;
+  margin-bottom: 2rem;
   padding: 0 var(--gutter);
 }
 .c-logos-reel {
@@ -246,14 +246,21 @@
 .c-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 44px;
   color: var(--navy-700);
-  font-size: 19px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  opacity: 0.75;
-  transition: opacity 0.2s;
+  opacity: 0.7;
+  transition:
+    opacity 0.25s ease,
+    color 0.25s ease;
+}
+.c-logo img {
+  height: 100%;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
 }
 .c-logo:hover {
   opacity: 1;
@@ -268,8 +275,7 @@
 /* ===== CASES (testimonial carousel over team photo) ===== */
 .c-cases {
   background: var(--navy-050);
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 3rem 0 0 0;
 }
 .c-cases .section-inner {
   padding-top: 0 !important;
