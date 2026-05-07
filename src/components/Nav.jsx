@@ -48,12 +48,14 @@ export function NextonFooter() {
     <footer className="nx-footer">
       <div className="nx-footer-inner">
         <div>
-          <img
-            src="/Nexton/NextonLogo.svg"
-            alt="Nexton Logo"
-            loading="lazy"
-            className="nx-footer-logo"
-          />
+          <Link to="/" aria-label="Nexton home">
+            <img
+              src="/Nexton/NextonLogo.svg"
+              alt="Nexton Logo"
+              loading="lazy"
+              className="nx-footer-logo"
+            />
+          </Link>
           <p style={{ fontSize: 14, lineHeight: 1.55, maxWidth: 360, color: "var(--navy-300)" }}>
             Engineer-led recruiting connecting Latin America's best builders with U.S. companies.
           </p>
@@ -79,16 +81,20 @@ export function NextonFooter() {
           <h4>About Us</h4>
           <ul>
             <li>
-              <a href="#">Who we are</a>
+              <a href="https://nexton.dev/about" target="_blank" rel="noopener noreferrer">
+                Who we are
+              </a>
             </li>
             <li>
               <Link to="/">For companies</Link>
             </li>
             <li>
-              <a href="#">Careers at Nexton</a>
+              <a href="https://nexton.dev/careers" target="_blank" rel="noopener noreferrer">
+                Careers at Nexton
+              </a>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="/#contact">Contact</Link>
             </li>
           </ul>
         </div>
