@@ -42,7 +42,12 @@ export default function Models() {
                 </span>
               </li>
             </ul>
-            <a href="#contact" className="btn btn-primary">
+            <a
+              href="https://meetings.hubspot.com/rodrigo-ruiz3/discovery-call-from-website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
               Book a call
             </a>
           </article>
@@ -79,7 +84,12 @@ export default function Models() {
                 </span>
               </li>
             </ul>
-            <a href="#contact" className="btn btn-accent">
+            <a
+              href="https://meetings.hubspot.com/rodrigo-ruiz3/discovery-call-from-website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-accent"
+            >
               Talk to sales
             </a>
           </article>
