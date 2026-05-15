@@ -272,6 +272,176 @@
   }
 }
 
+/* ===== AGENTIC ===== */
+.c-agentic {
+  background: var(--navy-1000);
+  color: var(--navy-200);
+  position: relative;
+  overflow: hidden;
+}
+.c-agentic::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 55%;
+  height: 110%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklch, var(--accent) 9%, var(--navy-800)) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+.c-agentic .eyebrow {
+  color: var(--navy-400);
+}
+.c-agentic-dot {
+  color: var(--accent);
+}
+.c-agentic-copy {
+  max-width: 640px;
+  margin-bottom: 72px;
+  position: relative;
+}
+.c-agentic-h2 {
+  color: white !important;
+  margin-bottom: 24px;
+}
+.c-agentic-accent {
+  color: var(--accent);
+}
+.c-agentic-body {
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.65;
+  color: var(--navy-400);
+  max-width: 560px;
+}
+.c-agentic-body strong {
+  color: var(--navy-200);
+  font-weight: 600;
+}
+
+.c-agentic-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 72px;
+  align-items: start;
+  position: relative;
+}
+@media (max-width: 960px) {
+  .c-agentic-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.c-agentic-stats {
+  display: flex;
+  flex-direction: column;
+}
+.c-agentic-stat {
+  padding: 32px 0;
+  border-top: 1px solid var(--navy-800);
+}
+.c-agentic-stat:last-child {
+  border-bottom: 1px solid var(--navy-800);
+}
+.c-agentic-num {
+  font-size: clamp(60px, 5.5vw, 80px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin-bottom: 12px;
+}
+.c-agentic-num--accent {
+  color: var(--accent);
+}
+.c-agentic-lbl {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--navy-500);
+  max-width: 28ch;
+}
+
+.c-rubric {
+  background: oklch(0.16 0.035 260);
+  border: 1px solid var(--navy-800);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.c-rubric-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--navy-800);
+  background: var(--navy-1000);
+}
+.c-rubric-chrome-name {
+  font-size: 12px;
+  color: var(--navy-500);
+}
+.c-rubric-dots {
+  display: flex;
+  gap: 6px;
+}
+.c-rubric-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--navy-700);
+  display: inline-block;
+}
+.c-rubric-body {
+  padding: 20px 22px 22px;
+}
+.c-rubric-title {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--navy-500);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--navy-800);
+  margin-bottom: 4px;
+}
+.c-rubric-rows {
+  display: flex;
+  flex-direction: column;
+}
+.c-rubric-row {
+  display: grid;
+  grid-template-columns: 24px 150px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--navy-800);
+}
+.c-rubric-row:last-child {
+  border-bottom: none;
+}
+.c-rubric-check {
+  flex-shrink: 0;
+}
+.c-rubric-skill {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--navy-400);
+}
+.c-rubric-desc {
+  font-size: 13px;
+  color: var(--navy-300);
+  line-height: 1.45;
+}
+.c-rubric-footer {
+  padding-top: 16px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--navy-600);
+  text-align: center;
+  border-top: 1px solid var(--navy-800);
+}
+
 /* ===== CASES (testimonial carousel over team photo) ===== */
 .c-cases {
   background: var(--navy-050);

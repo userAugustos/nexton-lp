@@ -13,6 +13,7 @@ import CaseStudies from "./components/CaseStudies";
 import HowItWorks from "./components/HowItWorks";
 import Models from "./components/Models";
 import CompaniesContact from "./components/CompaniesContact";
+import AgenticSection from "./components/AgenticSection";
 
 const COMPANIES_DEFAULTS = {
   accent: "#337BFF",
@@ -45,6 +46,7 @@ export default function Companies() {
       <CompaniesLogos />
       <CaseStudies />
       <HowItWorks />
+      <AgenticSection />
       <Models />
       <CompaniesContact />
 
