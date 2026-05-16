@@ -5,7 +5,7 @@ import Talent from "@/pages/Talent/Talent";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Companies />} />
