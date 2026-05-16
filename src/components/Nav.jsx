@@ -29,8 +29,12 @@ export function NextonNav({ active = "talent", dark = false }) {
 
         <nav className="nx-nav-links" aria-label="Primary">
           <a href="#offer">Talent Advice</a>
-          <a href="#blog">Blog</a>
-          <a href="#about">About Us</a>
+          <a href="https://blog.nexton.dev/" target="_blank" rel="noopener noreferrer">
+            Blog
+          </a>
+          <a href="https://nexton.dev/about" target="_blank" rel="noopener noreferrer">
+            About Us
+          </a>
         </nav>
 
         <a href={ctaHref} className="nx-cta">
