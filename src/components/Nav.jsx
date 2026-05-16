@@ -11,7 +11,7 @@ export function NextonNav({ active = "talent", dark = false }) {
       <div className="nx-nav-inner">
         <TransitionLink to="/talent" className="nx-logo" aria-label="Nexton">
           <img
-            src={dark ? "/Nexton/NextonLogo.svg" : "/Nexton/NextonLogoDark.svg"}
+            src={`${import.meta.env.BASE_URL}Nexton/${dark ? "NextonLogo.svg" : "NextonLogoDark.svg"}`}
             alt="Nexton"
             className="nx-logo-img"
           />
@@ -50,7 +50,7 @@ export function NextonFooter() {
         <div>
           <Link to="/" aria-label="Nexton home">
             <img
-              src="/Nexton/NextonLogo.svg"
+              src={`${import.meta.env.BASE_URL}Nexton/NextonLogo.svg`}
               alt="Nexton Logo"
               loading="lazy"
               className="nx-footer-logo"

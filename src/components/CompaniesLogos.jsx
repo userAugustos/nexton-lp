@@ -1,7 +1,7 @@
 const COMPANY_COUNT = 20;
 const COMPANIES = Array.from({ length: COMPANY_COUNT }, (_, i) => ({
   id: i + 1,
-  src: `/companies/company_${i + 1}.svg`,
+  src: `${import.meta.env.BASE_URL}companies/company_${i + 1}.svg`,
 }));
 
 export default function CompaniesLogos() {

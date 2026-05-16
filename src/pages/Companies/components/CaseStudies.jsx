@@ -43,7 +43,7 @@ export default function CaseStudies() {
       <div className="section-inner">
         <div className="c-cases-frame">
           <img
-            src="/team.jpg"
+            src={`${import.meta.env.BASE_URL}team.jpg`}
             alt="The Nexton team"
             className="c-cases-bg"
             loading="lazy"
@@ -67,7 +67,11 @@ export default function CaseStudies() {
                     referrerPolicy="no-referrer"
                     aria-label="Review on Clutch"
                   >
-                    <img src="/clutch.svg" alt="Clutch" className="c-tclutch-img" />
+                    <img
+                      src={`${import.meta.env.BASE_URL}clutch.svg`}
+                      alt="Clutch"
+                      className="c-tclutch-img"
+                    />
                   </a>
                   <span className="c-tclutch-score">4.9</span>
                   <span className="c-tclutch-stars">
