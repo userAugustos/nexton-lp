@@ -45,7 +45,7 @@ export default function CaseStudies() {
           <img
             src={`${import.meta.env.BASE_URL}team.jpg`}
             alt="The Nexton team"
-            className="c-cases-bg"
+            className="c-cases-bg !hidden md:!block"
             loading="lazy"
             decoding="async"
           />

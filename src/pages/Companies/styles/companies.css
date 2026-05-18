@@ -1201,6 +1201,7 @@
 .c-form input,
 .c-form select,
 .c-form textarea {
+  min-width: 0;
   background: var(--navy-050);
   border: 1px solid var(--navy-200);
   border-radius: 8px;
@@ -1228,6 +1229,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+}
+@media (max-width: 640px) {
+  .c-form-row {
+    grid-template-columns: 1fr;
+  }
 }
 .c-form-submit {
   margin-top: 8px;

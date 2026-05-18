@@ -1,134 +1,23 @@
-/* ============================================================
-   Shared nav
-   ============================================================ */
+/* view-transition-name and ::view-transition-* have no Tailwind equivalent */
 
-.nx-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  background: color-mix(in oklch, var(--navy-050) 78%, transparent);
-  border-bottom: 1px solid color-mix(in oklch, var(--navy-300) 50%, transparent);
-}
-.nx-nav-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 18px var(--gutter);
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-.nx-logo {
-  display: flex;
-  align-items: center;
-}
-.nx-logo-img {
-  height: 24px;
-  width: auto;
-  display: block;
-}
-.nx-footer-logo {
-  width: 144px;
-  height: auto;
-  display: block;
-  margin-bottom: 18px;
-  transition: filter 0.18s ease;
-}
-.nx-footer-logo:hover {
-  filter: brightness(1.1);
-}
-
-.nx-toggle {
-  position: relative;
-  margin-left: auto;
-  display: flex;
-  background: var(--navy-200);
-  padding: 3px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 500;
-  isolation: isolate;
-}
 .nx-toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  bottom: 3px;
-  width: calc(50% - 3px);
-  background: var(--navy-1000);
-  border-radius: 999px;
-  transform: translate3d(0, 0, 0);
-  transition: transform 0.42s cubic-bezier(0.5, 1.4, 0.55, 1);
-  z-index: 0;
   view-transition-name: nx-toggle-thumb;
-}
-.nx-toggle[data-active="talent"] .nx-toggle-thumb {
-  transform: translate3d(100%, 0, 0);
-}
-.nx-toggle a {
-  position: relative;
-  z-index: 1;
-  flex: 1 1 0;
-  text-align: center;
-  padding: 7px 18px;
-  border-radius: 999px;
-  color: var(--navy-600);
-  transition: color 0.22s ease;
-  white-space: nowrap;
-}
-.nx-toggle a.active {
-  color: white;
-}
-.nx-toggle a:hover:not(.active) {
-  color: var(--navy-1000);
-}
-
-.nx-nav-links {
-  display: flex;
-  gap: 28px;
-  font-size: 14px;
-  color: var(--navy-600);
-}
-.nx-nav-links a:hover {
-  color: var(--navy-1000);
 }
 
 .nx-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 18px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: white;
-  font-size: 13px;
-  font-weight: 500;
-  overflow: hidden;
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease;
   view-transition-name: nx-cta;
 }
-.nx-cta:hover {
-  background: var(--accent-deep);
-  transform: translateY(-1px);
-}
+
 .nx-cta-text {
-  display: inline-block;
   view-transition-name: nx-cta-text;
   animation: nx-cta-text-fallback 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
+
 @keyframes nx-cta-text-fallback {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 ::view-transition-group(nx-cta) {
   animation-duration: 360ms;
   animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -139,83 +28,18 @@
 ::view-transition-new(nx-cta-text) {
   animation: nx-cta-text-in 260ms 60ms ease-out backwards;
 }
+
 @keyframes nx-cta-text-out {
-  to {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
+  to { opacity: 0; transform: translateY(-6px); }
 }
 @keyframes nx-cta-text-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .nx-toggle-thumb {
-    transition: none;
-  }
-  .nx-cta-text {
-    animation: none;
-  }
+  .nx-toggle-thumb { transition: none; }
+  .nx-cta-text { animation: none; }
   ::view-transition-old(nx-cta-text),
-  ::view-transition-new(nx-cta-text) {
-    animation: none;
-  }
-}
-
-/* ============================================================
-   Footer
-   ============================================================ */
-
-.nx-footer {
-  background: var(--navy-1000);
-  color: var(--navy-300);
-  padding: 80px var(--gutter) 40px;
-}
-.nx-footer-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 64px;
-}
-.nx-footer h4 {
-  color: white;
-  font-size: 13px;
-  font-weight: 500;
-  margin: 0 0 16px;
-  letter-spacing: -0.01em;
-}
-.nx-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-}
-.nx-footer a:hover {
-  color: white;
-}
-.nx-footer-base {
-  max-width: var(--max);
-  margin: 60px auto 0;
-  padding-top: 28px;
-  border-top: 1px solid var(--navy-800);
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--navy-500);
-  font-family: var(--font-mono);
-}
-@media (max-width: 800px) {
-  .nx-footer-inner {
-    grid-template-columns: 1fr 1fr;
-  }
+  ::view-transition-new(nx-cta-text) { animation: none; }
 }
